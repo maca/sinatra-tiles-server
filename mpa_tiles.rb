@@ -29,7 +29,10 @@ get '/' do
 end
 
 get '/json' do
-  content_type 'application/json'#, :charset => 'utf-8'
-  {:name => 'Nuevo León', :x => 25.67, :y => -100.30, :attributes => {:education => 30, 'health' => 60}}.to_json
+  # content_type 'application/json'#, :charset => 'utf-8'
+  # {:name => 'Nuevo León', :x => 25.67, :y => -100.30, :attributes => {:education => 30, 'health' => 60}}.to_json
+  bb = params[:bbox].split(',').to_json
+  sw = [bb[0], bb[1]].sort
+  ne = [bb[2], bb[3]].sort
 end
 
