@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'sinatra'
 require 'sqlite3'
 require 'haml'
@@ -23,5 +25,13 @@ end
 
 get '/' do
   haml :index
+end
+
+
+get '/json' do
+  content_type 'application/json', :charset => 'utf-8'
+  <<-JSON
+    [{name : 'Nuevo León', x : 25.67, y : -100.30, attributes : {education : 30, health : 60} }]
+  JSON
 end
 
