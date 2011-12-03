@@ -4,6 +4,8 @@ require 'sinatra'
 require 'sqlite3'
 require 'haml'
 require 'geocoder'
+require 'json'
+
 Geocoder::Configuration.lookup = :yahoo
 
 get '/tiles/:zoom/:column/:row' do
@@ -30,7 +32,7 @@ get '/' do
 end
 
 
-get '/json.json' do
+get '/json' do
   content_type 'application/json', :charset => 'utf-8'
   ['Nuevo Leon', 'Sonora', 'Yucatan', 'DF'].map do |state|
     x,y = Geocoder.coordinates("#{state}, Mexico")

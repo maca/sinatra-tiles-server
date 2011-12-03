@@ -1,4 +1,11 @@
 $ ->
+  $.ajax 
+    method   : 'GET'
+    url      : '/json'
+    success  : (data) ->
+      paint data
+    dataType : 'json' 
+
   po = org.polymaps
 
   map = po.map()
@@ -6,15 +13,8 @@ $ ->
     .center({lat: 25.67, lon: -100.30})
     .zoom(6)
     .add(po.interact())
-  
+
   map.add(po.image()
-       .url(po.url("/tiles/{Z}/{X}/{Y}")))
-  map.add(po.geoJson().url(crimespotting("http://oakland.crimespotting.org").callback(paint))
-
-  paint = ->
-
-    alert "chino"
-`$.getJSON("/json.json", function(json) {
-   alert("JSON Data: " + json.users[3].name);
- });`
-       
+    .url(po.url("/tiles/{Z}/{X}/{Y}")))
+  
+    
