@@ -1,3 +1,4 @@
+$ ->
   po = org.polymaps
 
   map = po.map()
@@ -8,3 +9,12 @@
   
   map.add(po.image()
        .url(po.url("/tiles/{Z}/{X}/{Y}")))
+  map.add(po.geoJson().url(crimespotting("http://oakland.crimespotting.org").callback(paint))
+
+  paint = ->
+
+    alert "chino"
+`$.getJSON("/json.json", function(json) {
+   alert("JSON Data: " + json.users[3].name);
+ });`
+       

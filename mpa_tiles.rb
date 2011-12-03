@@ -3,6 +3,7 @@
 require 'sinatra'
 require 'sqlite3'
 require 'haml'
+require 'geocoder'
 
 get '/tiles/:zoom/:column/:row' do
   content_type 'image/png'
@@ -27,11 +28,15 @@ get '/' do
   haml :index
 end
 
+def geo_code query
+  Geocoder::Configuration.lookup = :yahoo
+  Geocoder.coordinates(query)
+end
 
-get '/json' do
+get '/json.json' do
   content_type 'application/json', :charset => 'utf-8'
-  <<-JSON
-    [{name : 'Nuevo León', x : 25.67, y : -100.30, attributes : {education : 30, health : 60} }]
-  JSON
+  ['Nuevo Leon', 'Sonora', 'Yucatan'].map do |state|
+    {:name => state, :attributes => {"Educación" => rand(40) + 10, "Salud" => rand(60) + 10 }}
+  end.to_json
 end
 
