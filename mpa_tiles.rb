@@ -3,6 +3,7 @@
 require 'sinatra'
 require 'sqlite3'
 require 'haml'
+require 'json'
 
 get '/tiles/:zoom/:column/:row' do
   content_type 'image/png'
@@ -27,11 +28,8 @@ get '/' do
   haml :index
 end
 
-
 get '/json' do
-  content_type 'application/json', :charset => 'utf-8'
-  <<-JSON
-    [{name : 'Nuevo León', x : 25.67, y : -100.30, attributes : {education : 30, health : 60} }]
-  JSON
+  content_type 'application/json'#, :charset => 'utf-8'
+  {:name => 'Nuevo León', :x => 25.67, :y => -100.30, :attributes => {:education => 30, 'health' => 60}}.to_json
 end
 
