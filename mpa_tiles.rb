@@ -40,4 +40,15 @@ get '/json' do
   end.to_json
 end
 
+get '/prueba' do
+  @name = 'Chino'
+  @attributes = ['Educación', 'Salud', 'Delitos', 'Arrestos', 'IPods robados']
+  @states = ['Nuevo Leon', 'Sonora', 'Yucatan', 'DF'].map do |state|
+    lat,long = Geocoder.coordinates("#{state}, Mexico")
+    {:name => state, :lat => lat, :long => long, :attributes => {"Educación" => rand(40) + 10, "Salud" => rand(60) + 10 }}
+  end
+  erb :prueba
+
+end
+
 

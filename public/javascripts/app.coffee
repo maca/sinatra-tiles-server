@@ -16,5 +16,6 @@ $ ->
 
   map.add(po.image()
     .url(po.url("/tiles/{Z}/{X}/{Y}")))
+
   
     

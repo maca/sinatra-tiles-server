@@ -1,0 +1,144 @@
+#side_menu{
+  background:#ddd;
+  padding:5px;
+  width:50px;
+  position:fixed;
+  top:200px;
+  right:0px;
+  z-index:1;
+  background:#444;
+}
+#side_menu ul{
+  list-style:none;
+  padding:0;
+}
+#side_menu img { 
+width: 50%; 
+height: 50%;
+}
+
+#new{
+  background:#ddd;
+  padding:0px;
+}
+#new .step{
+  background:#f90;
+  padding:10px;
+  margin-bottom:10px;
+
+}
+#new .action{
+  padding:20px;
+}
+#new .action button{
+  float:right;
+}
+#menu{
+  background:#ddd;
+  padding:0px;
+  width:300px;
+  position:fixed;
+  top:200px;
+  right:200px;
+  z-index:1;
+}
+#menu ul{
+  list-style:none;
+  padding:0;
+}
+
+#menu li{
+  padding:10px;
+}
+#menu li:hover{
+  background:#fff;
+}
+
+
+
+/*** FLOATING PANELS ***/
+
+ul#info-block, ul#toolbox { 
+	margin: 15px; 
+	color: #aaa; 
+	font: 11px Helvetica, Arial, sans-serif;
+}
+
+ul#info-block li, ul#toolbox li { 
+	background: url('../img/bg-black.png');
+	display: inline;
+}
+
+div#thumb-tray { height: 117px } /* thumb.height + controls.height */
+
+	div#thumb-tray ul#thumb-list li { width: 100px; height: 75px }
+
+/*** INFOBLOCK ***/
+
+ul#info-block { 
+	float: left; 
+	overflow-y: hidden;
+}
+
+ul#info-block.closed { height: 48px }
+
+ul#info-block.dropdown { height: 100% }
+
+ul#info-block li { 
+	margin: 0 0 10px 0; 
+	padding: 10px; 
+	clear: both; 
+	float: left;
+}
+
+	ul#info-block li span { 
+		display: block;
+		padding: 8px;
+	}
+
+	ul#info-block li #translated_title { color: white }
+
+	ul#info-block li #original_title { font-style: italic }
+
+	ul#info-block li a { 
+		color:#eee; 
+		font-weight:bold; 
+		text-decoration: none;
+	}
+
+/*** TOOLBOX ***/
+
+ul#toolbox { 
+  position:fixed;
+  top:200px;
+  right:0px;
+}
+ul#toolbox li {
+	float: right;
+	display: inline;
+	clear: both;
+	padding: 8px;
+}
+
+	ul#toolbox li.opened { 
+		width: 300px; 
+		height: 300px 
+	}
+
+		ul#toolbox li img {
+			width: 20px; 
+			float: right;
+			opacity: .5;
+		}
+
+ul#toolbox li span {
+	position: absolute;
+	padding: 0 5px 5px;
+	float: left;
+	display: none;
+}
+
+	ul#toolbox li span.opened { display: inline  }
+
+
+
