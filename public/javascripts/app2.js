@@ -27,22 +27,8 @@ function load(e) {
   if (e.features.length > 0) {
     console.log(e);
   }
-  // var cluster = e.tile.cluster || (e.tile.cluster = kmeans()
-  //     .iterations(16)
-  //     .size(64));
-
-  // for (var i = 0; i < e.features.length; i++) {
-  //   // cluster.add(e.features[i].data.geometry.coordinates);
-
-  // }
-
-
-  // var means = cluster.means();
-  // means.sort(function(a, b) { return b.size - a.size; });
-  
 
   for (var i = 0; i < e.features.length; i++) {
-    
     var data  = e.features[i].data;
     var point = g.appendChild(po.svg("circle"));
     var value = data.properties['Salud'];
@@ -50,6 +36,5 @@ function load(e) {
     point.setAttribute("cx", data.geometry.coordinates[0]);
     point.setAttribute("cy", data.geometry.coordinates[1]);
     point.setAttribute("r", 5);
-    // point.setAttribute("r", Math.pow(2, tile.zoom - 11) * value);
   }
 }

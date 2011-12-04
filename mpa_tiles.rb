@@ -7,7 +7,7 @@ require 'geocoder'
 require 'json'
 require 'geocoder'
 
-Geocoder::Configuration.lookup = :yahoo
+# Geocoder::Configuration.lookup = :yahoo
 
 get '/tiles/:zoom/:column/:row' do
   content_type 'image/png'
@@ -31,13 +31,14 @@ get '/' do
   haml :index
 end
 
-DATA = ['Nuevo Leon', 'Sonora', 'Yucatan', 'DF'].map do |state|
-  lat, lng = Geocoder.coordinates("#{state}, Mexico")
-  
-  geometry   = {:type => 'Point', :coordinates => [lat, lng]}
-  properties = {"Educación" => rand(40) + 10, "Salud" => rand(60) + 10 }
-  {:id => state, :type => 'Feature', :geometry => geometry, :properties => properties}
-end
+# DATA = ['Nuevo Leon', 'Sonora', 'Yucatan', 'DF'].map do |state|
+#   lat, lng = Geocoder.coordinates("#{state}, Mexico")
+#   geometry   = {:type => 'Point', :coordinates => [lat, lng]}
+#   properties = {"Educación" => rand(40) + 10, "Salud" => rand(60) + 10 }
+#   {:id => state, :type => 'Feature', :geometry => geometry, :properties => properties}
+# end
+
+DATA = [{:id=>"Nuevo Leon", :type=>"Feature", :geometry=>{:type=>"Point", :coordinates=>[25.7276624, -99.54509739999999]}, :properties=>{"Educación"=>26, "Salud"=>36}}, {:id=>"Sonora", :type=>"Feature", :geometry=>{:type=>"Point", :coordinates=>[29.2972247, -110.3308814]}, :properties=>{"Educación"=>28, "Salud"=>65}}, {:id=>"Yucatan", :type=>"Feature", :geometry=>{:type=>"Point", :coordinates=>[20.7098786, -89.0943377]}, :properties=>{"Educación"=>13, "Salud"=>11}}, {:id=>"DF", :type=>"Feature", :geometry=>{:type=>"Point", :coordinates=>[19.4326077, -99.133208]}, :properties=>{"Educación"=>19, "Salud"=>32}}]
 
 get '/json' do
   content_type 'application/json', :charset => 'utf-8'
