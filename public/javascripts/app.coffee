@@ -1,8 +1,4 @@
 $ ->
-  paint = (data) ->
-
-
-
   $.ajax 
     method   : 'GET'
     url      : '/json'
