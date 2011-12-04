@@ -21,24 +21,35 @@ map.add(po.compass()
     .pan("none"));
 
 function load(e) {
-  console.log(e);
+  var tile = e.tile, g = tile.element;
+  while (g.lastChild) g.removeChild(g.lastChild);
+
+  if (e.features.length > 0) {
+    console.log(e);
+  }
   // var cluster = e.tile.cluster || (e.tile.cluster = kmeans()
   //     .iterations(16)
   //     .size(64));
 
   // for (var i = 0; i < e.features.length; i++) {
-  //   cluster.add(e.features[i].data.geometry.coordinates);
+  //   // cluster.add(e.features[i].data.geometry.coordinates);
+
   // }
 
-  // var tile = e.tile, g = tile.element;
-  // while (g.lastChild) g.removeChild(g.lastChild);
 
   // var means = cluster.means();
   // means.sort(function(a, b) { return b.size - a.size; });
-  // for (var i = 0; i < means.length; i++) {
-  //   var mean = means[i], point = g.appendChild(po.svg("circle"));
-  //   point.setAttribute("cx", mean.x);
-  //   point.setAttribute("cy", mean.y);
-  //   point.setAttribute("r", Math.pow(2, tile.zoom - 11) * Math.sqrt(mean.size));
-  // }
+  
+
+  for (var i = 0; i < e.features.length; i++) {
+    
+    var data  = e.features[i].data;
+    var point = g.appendChild(po.svg("circle"));
+    var value = data.properties['Salud'];
+
+    point.setAttribute("cx", data.geometry.coordinates[0]);
+    point.setAttribute("cy", data.geometry.coordinates[1]);
+    point.setAttribute("r", 5);
+    // point.setAttribute("r", Math.pow(2, tile.zoom - 11) * value);
+  }
 }
